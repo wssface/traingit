@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>简易计算器</title>
+</head>
+<body>
+    <input type="text" id="text1">
+    <select id="select">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+    </select>
+    <input type="text" id="text2">
+    <input type="button" id="btn" value="=" onclick="count()">
+    <input type="text" id="sum">
+    <script>
+        function count(){
+            var a = document.getElementById("text1").value;
+            var b = document.getElementById("text2").value;
+            var c = document.getElementById("select").value;
+            var sum;
+            switch (c){
+                case "+":
+                    sum = parseInt(a)+parseInt(b);
+                    break;
+                case "-":
+                    sum = a-b;
+                    break;
+                case "*":
+                    sum = a*b;
+                    break;
+                case "/":
+                    sum = a/b;
+                    break;
+            }
+            document.getElementById("sum").value=sum;
+        }
+    </script>
+</body>
+</html>
