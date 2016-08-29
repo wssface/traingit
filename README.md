@@ -1,2 +1,2 @@
 # traingit
-js »ù´¡ÑµÁ·
+js train
