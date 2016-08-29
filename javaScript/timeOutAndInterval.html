@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>计时器</title>
+</head>
+<body>
+<input type="date" id="clock" size="50" readonly="readonly">
+<input type="button" value="stop" onclick="clearInterval(s)">
+<input type="button" value="begin" onclick="setInterval(clock,100)">
+<input type="text" id="count">
+<input type="button" onclick="numCount()" value="计时">
+<input type="button" onclick="clearTimeout(ss)" value="停止">
+<h3>Navigator</h3>
+<img src="img/Navigator.jpg">
+<br>
+<input type="button" value="查看浏览器"  onclick="validB()" >
+<br>
+<h3>screen对象</h3>
+<img src="img/screen.jpg">
+<script>
+    //setInterval()从载入页面后每隔指定的时间执行代码。clearInterval取消 setInterval() 设置的交互时间。
+    var s=setInterval(clock,100);
+    var attime;
+    function clock(){
+        var date=new Date();
+        attime=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+        document.getElementById("clock").value=attime;
+    }
+    //setTimeout()计时器，在载入后延迟指定时间后,去执行一次表达式,仅执行一次。
+    //计数器
+    var num=0;
+    var ss;
+    function numCount(){
+        document.getElementById("count").value=num;
+        num++;
+       ss= setTimeout(numCount,1000);
+    }
+    /*function stopCount(){
+        clearTimeout(ss);
+    }*/
+
+    /*
+    * history对象记录了用户曾经浏览过的页面
+    * */
+    document.write("总共浏览了"+window.history.length+"个网页");
+    //获取当前url
+    document.write("当前网址为："+window.location.href);
+    /*
+    * Navigator 对象包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本。
+    * */
+    var h=navigator.appName;
+    var ver=navigator.platform;
+    document.write("<br>"+h+"<br>"+ver);
+    /*
+    *userAgent返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串
+    * */
+    function validB(){
+        var u_agent =  navigator.userAgent ;
+        var B_name="不是想用的主流浏览器!";
+        if(u_agent.indexOf("Firefox")>-1){
+            B_name="Firefox";
+        }else if(u_agent.indexOf("Chrome")>-1){
+            B_name="Chrome";
+        }else if(u_agent.indexOf("MSIE")>-1&&u_agent.indexOf("Trident")>-1){
+            B_name="IE(8-10)";
+        }
+        document.write("浏览器:"+B_name+"<br>");
+        document.write("u_agent:"+u_agent+"<br>");
+    }
+
+    document.write( "屏幕宽度："+screen.width);
+    document.write( "屏幕高度："+screen.height);
+</script>
+</body>
+</html>

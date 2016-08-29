@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+<h3>数组方法</h3>
+<img src="img/array.png"><br>
+<script>
+    //concat() 方法用于连接两个或多个数组。此方法返回一个新数组，不改变原来的数组。
+    var arr1=["1","2","3","4"];
+    var arr2=new Array();
+    arr2[0]="5";
+    arr2[1]="50";
+    var arr3=arr1.concat(arr2);
+    var arr4=arr1.concat(arr2,arr3);
+    document.write("新数组arr3为："+arr3+"<br>");
+    document.write("拼接了3个数组的新数组arr4为："+arr4+"<br>");
+    //join()方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。
+    document.write("使用join的.连接数组arr3："+arr3.join(".")+"<br>");
+    //reverse() 方法用于颠倒数组中元素的顺序。
+    document.write("使用reverse() 颠倒数组arr3："+arr3.reverse()+"<br>");
+    //slice() 方法可从已有的数组中返回选定的元素。
+    /*
+    * -1表示从最后一个元素开始，-2指倒数第二个元素
+    * 从 start 到 end （不包括该元素）的 arrayObject 中的元素。
+    * 该方法并不会修改数组，而是返回一个子数组
+    * */
+    document.write("slice()取arr1最后一个元素："+arr1.slice(-1)+"<br>");
+    document.write("slice()取arr1第2,3个元素："+arr1.slice(2,3)+"<br>");
+    //sort()方法使数组中的元素按照一定的顺序排列。
+    /*
+    *比较函数应该具有两个参数 a 和 b，其返回值如下
+    * 若返回值<=-1，则表示 A 在排序后的序列中出现在 B 之前。
+    *  若返回值>-1 && <1，则表示 A 和 B 具有相同的排序顺序。
+    *  若返回值>=1，则表示 A 在排序后的序列中出现在 B 之后。
+    * */
+    //若升序
+    function sortSum(a,b){
+        return a-b;
+    }
+    document.write("升序arr4："+arr4.sort(sortSum)+"<br>");
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>js内置对象练习</title>
+</head>
+<body>
+    <p>1、显示打印的日期。 格式为类似“XXXX年XX月XX日 星期X” 的当前的时间。</p>
+    <p>2、计算出该班级的平均分（保留整数）。</p>
+    <p>同学成绩数据如下："小明:87; 小花:81; 小红:97; 小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76"</p>
+    <p id="sum"></p>
+    <script>
+        var scoreStr="小明:87;小花:81;小红:97;小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
+        var scoreArr=scoreStr.split(";");
+        var date=new Date();
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var data=date.getDate();
+        var day=date.getDay();
+        var sum=0;
+        var weekDay=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+        for(var i=0;i<scoreArr.length;i++){
+            sum=sum+parseInt(scoreArr[i].slice(3,5));
+        }
+        document.write(year+"年"+month+"月"+data+"日"+" "+weekDay[day]+"--"+"班级总分为："+sum+"<br>");
+        var pingj=Math.round(sum/scoreArr.length);
+        document.write("全班平均分为："+pingj);
+    </script>
+</body>
+</html>

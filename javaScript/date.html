@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>时间</title>
+</head>
+<body>
+    <script>
+        var mydate=new Date();
+        var weekDay=['周日','周一','周二','周三','周四','周五','周六'];
+        document.write("获取天数："+mydate.getDay()+"<br>");
+        document.write("今天是："+weekDay[mydate.getDay()]+"<br>");
+        document.write("当前时间："+mydate+"<br>");
+        //设置时间
+        mydate.setTime(mydate.getTime()+60*60*1000);
+        document.write("推迟一小时时间:"+mydate+"<br>");
+        //大小写转换
+        var myStr="hello!"
+        var myDat=myStr.toUpperCase();//小写转为大写
+        document.write(myDat+"<br>");
+        var mySmal=myDat.toLowerCase();//大写转为小写
+        document.write(mySmal+"<br>");
+        //charAt返回指定位置的字符charAt(index)
+        document.write("索引为2的字符为："+mySmal.charAt(2));
+        //indexOf()返回某个指定的字符串值在字符串中首次出现的位置。
+        var str="i love javascript";
+        document.write("i第一次出现的位置"+str.indexOf("i")+"<br>");
+        document.write("v第一次出现的位置"+str.indexOf("v")+"<br>");
+        document.write("v从索引9后开始检索第一次出现的位置"+str.indexOf("v",9)+"<br>");
+        //split() 方法将字符串分割为字符串数组，并返回此数组
+        document.write("以空格为分隔："+str.split(" ")+"<br>");
+        document.write("以空格为分隔,不得多于2组："+str.split(" ",2)+"<br>");
+        //substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+        var str1="i love javascript";
+        document.write("从索引2开始包括2以后的字符："+str1.substring(2)+"<br>");
+        document.write("从索引2开始包括2以后的字符到5结束不包括5："+str1.substring(2,5)+"<br>");
+        //substr(startPos,length)从字符串中提取从 startPos位置开始的指定数目的字符串。
+        document.write("从索引3开始截取5个长度的字符："+str1.substr(3,4)+"<br>");
+    </script>
+</body>
+</html>
