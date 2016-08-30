@@ -1,0 +1,11 @@
+*{padding: 0;margin: 0}
+body{font-size: 12px;color:#000;}
+.countain{display: inline-block;margin:20px 45%;}
+.nav ul{height:30px;line-height: 30px;}
+.nav ul li{display: inline-block;height:28px;line-height: 28px;margin-left:5px;border:1px solid #efefef;border-bottom:0;width:40px;text-align: center;}
+#box{width:300px;border:1px solid #000;padding:5px 0;border-top:2px solid red;}
+.hid{display: none;}
+.show{display: block;}
+#box p{margin:5px 0;text-indent: 5px;}
+.nav ul li:hover{cursor: pointer;}
+.nav ul li.active{border-top:2px solid red;border-bottom:2px solid #fff;}

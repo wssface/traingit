@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>dom元素之添加删除</title>
+</head>
+<body>
+    <table width="50%" border="1" id="table">
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>xh001</td>
+            <td>王小明</td>
+            <td><a href="javascript:;" onclick="dele(this)">删除</a></td>
+        </tr>
+        <tr>
+            <td>xh002</td>
+            <td>刘小芳</td>
+            <td><a href="javascript:;"  onclick="dele(this)">删除</a></td>
+        </tr>
+    </table>
+    <input type="button" value="添加一行" onclick="add()">
+</body>
+</html>
+        <script>
+            window.onload=function(){
+                var tr=document.getElementsByTagName("tr");
+                for(var i=0;i<tr.length;i++){
+                    bgChange(tr[i]);
+                }
+            };
+
+            function bgChange(x){
+                x.onmouseover=function(){
+                    x.style.background=" #f2f2f2";
+                };
+                x.onmouseout=function(){
+                    x.style.background="#fff";
+                }
+            };
+
+
+            function dele(x){
+                var dePat= x.parentNode.parentNode;
+                dePat.parentNode.removeChild(dePat);
+            }
+
+            var num=2;
+            function add(){
+                num++;
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                td.innerHTML="xh00"+num;
+                td2.innerHTML="第"+num+"位同学";
+                td3.innerHTML="<a href='javascript:;'  onclick='dele(this)'>删除</a>";
+                var tb=document.getElementById("table");
+                tb.appendChild(tr);
+                tr.appendChild(td);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                var tr=document.getElementsByTagName("tr");
+                for(var i=0;i<tr.length;i++){
+                    bgChange(tr[i]);
+                }
+            }
+
+
+        </script>

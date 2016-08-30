@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>getElementByID,getElementsByName,getElementsByTagName</title>
+</head>
+<body>
+    <form>
+        <label>请选择爱好：</label>
+        <input type="checkbox" name="hobby" id="hobby1">  音乐
+        <input type="checkbox" name="hobby" id="hobby2">  登山
+        <input type="checkbox" name="hobby" id="hobby3">  游泳
+        <input type="checkbox" name="hobby" id="hobby4">  阅读
+        <input type="checkbox" name="hobby" id="hobby5">  打球
+        <input type="checkbox" name="hobby" id="hobby6">  跑步
+        <input type="checkbox" name="hobby" id="hobby7">  健身<br>
+        <input type="button" value="全选" onclick="checkAll()">
+        <input type="button" value="全不选" onclick="clearCheck()">
+        <p>请输入您要选择爱好的序号，序号为1-6:</p>
+        <input type="text" name="num" id="num">
+        <input type="button" value="确定" name="sure" onclick="sureChcek()">
+    </form>
+    <p>getAttribute()和setAttribute()方法</p>
+    <ul id="test">
+        <li title="JS">JavaScript</li>
+        <li title="JQ">JQuery</li>
+        <li title="">HTML/CSS</li>
+        <li title="JAVA">JAVA</li>
+        <li title="">PHP</li>
+    </ul>
+<script>
+    var hobby = document.getElementsByName("hobby");
+    //全选
+    function checkAll(){
+        for(var i=0;i<hobby.length;i++){
+            hobby[i].checked=true;
+        }
+    }
+    //全不选
+    function clearCheck(){
+        for(var i=0;i<hobby.length;i++){
+            hobby[i].checked=false;
+        }
+    }
+    //  选中某个
+    function sureChcek(){
+        var numb=document.getElementById("num").value;
+        for(var i=0;i<hobby.length;i++){
+            if(i==numb-1){
+                hobby[i].checked=true;
+            }
+        }
+    }
+
+    /*
+    * getAttribute()和setAttribute()方法
+    * 使用getAttribute获取title，当title为空，设置title
+    * 1. 元素节点的 nodeName 与标签名相同
+         2. 属性节点的 nodeName 是属性的名称
+         3. 文本节点的 nodeName 永远是 #text
+         4. 文档节点的 nodeName 永远是 #document
+    * 元素类型    节点类型
+     元素          1
+     属性          2
+     文本          3
+     注释          8
+     文档          9
+    * */
+    var lists=document.getElementsByTagName("li");
+    for(var i=0;i<lists.length;i++){
+        var text=lists[i].getAttribute("title");
+        document.write("title分别为："+text+"-----");
+        if(text==""){
+            lists[i].setAttribute("title","hahah");
+            var text2=lists[i].getAttribute("title");
+            document.write("重新设置了title："+text2+"<br>");
+        }
+        document.write("节点名称："+lists[i].nodeName+"<br>");
+        document.write("节点的值："+lists[i].nodeValue+"<br>");
+        document.write("节点得类型："+lists[i].nodeType+"<br>");
+    }
+
+    /*
+    * 插入节点appendChild()
+    * */
+    var test=document.getElementById("test");
+    var s=document.createElement("li");
+    s.innerHTML="add";
+    test.appendChild(s);
+ </script>
+</body>
+</html>
