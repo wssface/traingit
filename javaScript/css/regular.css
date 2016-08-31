@@ -1,0 +1,8 @@
+*{padding: 0;margin: 0;}
+em,i{font-style: normal;}
+.msg{display: none;margin-left: 250px;}
+label{float: left;}
+.clear{clear: both;padding:5px 0;}
+.count{display: none;}
+em{display: block;padding:5px 20px;background: pink;color:#fff;border-right:2px solid #fff;float: left;font-size:10px;}
+em.active{background: red;}
