@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>domReady实例</title>
+    <script src="js/domReady.js"></script>
+</head>
+<body>
+    <div id="showMsg"></div>
+    <div>
+        <img src="img/math1.png">
+        <img src="img/math1.png">
+        <img src="img/math1.png">
+        <img src="img/math1.png">
+    </div>
+<script>
+    var d=document;
+    var msg= d.getElementById("showMsg");
+    var imgs= d.getElementsByTagName("img");
+    var time1=null;
+    var time2=null;
+    myReady(function(){
+        msg.innerHTML+="dom已加载<br>";
+        time1=new Date().getTime();
+        msg.innerHTML+=time1+"<br>";
+    })
+
+    window.onload=function(){
+        msg.innerHTML+="onload已加载<br>";
+        time2=new Date().getTime();
+        msg.innerHTML+='onload比myready慢'+(time2-time1)+"ms";
+    }
+</script>
+</body>
+</html>
