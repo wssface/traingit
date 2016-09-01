@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>获取样式</title>
+    <style>
+        #div1{
+            width:200px;
+            height: 200px;
+            background: red;
+            border:2px solid #000;
+        }
+    </style>
+    <script>
+        //当有了border时在慢慢变小宽度就会发现没有变化，甚至还会变宽,这是因为offsetWidth获取的是包括边框在内的所有宽度
+
+        window.onload=function(){
+            startMove();
+        }
+
+        function startMove(){
+            setInterval(function(){
+                var odiv=document.getElementById("div1");
+                odiv.style.width=parseInt(getStyle(odiv,'width'))-1+'px';
+                odiv.style.border=parseInt(getStyle(odiv,'border'))+1+'px'+' solid'+' #000';
+            },30)
+        }
+        //所以就需要使用：
+        //currentStyle针对ie浏览器,getComputedStyle针对火狐
+        function getStyle(obj,attr){
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            }else{
+                return getComputedStyle(obj,false)[attr];
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="div1"></div>
+</body>
+</html>

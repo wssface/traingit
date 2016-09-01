@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>速度动画</title>
+    <style>
+        *{padding:0;margin:0}
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: relative;
+            left: -200px;
+            top: 0;
+        }
+        #div1 span{
+            width:20px;
+            height:50px;
+            line-height: 25px;
+            background: blue;
+            position: absolute;
+            left: 200px;
+            top: 75px;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var odiv=document.getElementById("div1");
+            odiv.onmouseover=function(){
+                startMove(0);
+            }
+
+            odiv.onmouseout=function(){
+                startMove(-200);
+            }
+        }
+
+        var timer=null;
+        function startMove(iTaget){
+            clearInterval(timer);
+            var odiv=document.getElementById("div1");
+            var speed=0;
+            if(odiv.offsetLeft<iTaget){
+                speed=10;
+            }else{
+                speed=-10;
+            }
+            timer=setInterval(function(){
+                if(odiv.offsetLeft==iTaget){
+                    clearInterval(timer);
+                }else{
+                    odiv.style.left=odiv.offsetLeft+speed+'px';
+                }
+            },30)
+        }
+
+    </script>
+</head>
+<body>
+    <div id="div1">
+        <span id="share">分享</span>
+    </div>
+</body>
+</html>
