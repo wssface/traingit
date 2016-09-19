@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge"><!--设置ie兼容性-->
+    <title>bing搜索框</title>
+    <link rel="stylesheet" href="css/style.css" >
+    <script type="text/javascript" src="js/search.js"></script>
+</head>
+<body>
+<div class="bg-div">
+    <div class="search-box">
+        <div class="logo"></div>
+        <form id="search-from" action="https://www.bing.com/search" target="_blank" method="get" class="search-warp">
+            <input class="search-input" id="search-input" type="text" name="q">
+            <input class="search-submit" type="submit" value=""/>
+        </form>
+    </div>
+    <div class="suggest" id="search-suggest">
+        <ul>
+            <li>所1</li>
+            <li>所2</li>
+            <li>所3</li>
+        </ul>
+    </div>
+</div>
+<script>
+    addEvent('search-input','keyup',function(){
+        var searchRext=getDom('search-input').value;
+        ajaxGet('http://api.bing.com/qsonhs.aspx?q='+searchRext,function(d){
+            var d= d.AS.Results[0].Suggests;
+            var html='';
+            for(var i=0;i<data.length;i++){
+                html+='<ul>'+
+                '<li>'+data[i].Txt+'</li>'+
+                '</ul>';
+            }
+            getDom('search-suggest').innerHTML=html;
+            getDom('search-suggest').style.top=getElementTop(getDom('search-from'))+38+'px';
+            getDom('search-suggest').style.left=getElementLeft(getDom('search-from'))+'px';
+            getDom('search-suggest').style.position='absolute';
+            getDom('search-suggest').style.display='block';
+        })
+    });
+delegateEvent('li','click',function(){
+    var keyword=this.innerHTML;
+    getDom("search-input").innerHTML(keyword);
+    location.href='http://cn.bing.com/search?q='+keyword;
+})
+</script>
+</body>
+</html>

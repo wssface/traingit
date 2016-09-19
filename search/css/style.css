@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #333;
+    font-family: "PingHei", "Microsoft YaHei", "Helvetica Neue", "Helvetica", "Arial", "Verdana", "sans-serif";
+}
+.bg-div{
+
+    text-align:center;
+    margin: 0 auto;
+    height: 690px;
+    width: 1228px;
+    background-image: url(http://img.mukewang.com/52da5e7d0001c0f813660768.jpg);
+}
+.search-box{
+    position: absolute;
+    top:200px;
+    left: 300px;
+}
+.logo{
+    float:left;
+    background: url(http://img.mukewang.com/52da5e530001eea901070053.jpg) no-repeat;
+    margin: -4px 18px 0 0;
+    height: 53px;
+    width: 107px;
+}
+form{
+    float: left;
+    background: #fff;
+    padding: 5px;
+}
+.search-input{
+    border: 0;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    outline:none;
+    width: 350px;
+}
+.search-submit{
+    border: 0;
+    width: 29px;
+    height: 29px;
+    float: left;
+    background: url(http://img.mukewang.com/52da5df800012b1e02220137.jpg) no-repeat -30px -107px;
+}
+.suggest{
+    background: #fff;
+    width: 388px;
+    border: 1px solid #999;
+   display: none;
+}
+.suggest ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.suggest ul li{
+    text-align: left;
+    padding: 3px;
+    font-size: 14px;
+    line-height: 25px;
+    cursor: pointer;
+}
+.suggest ul li:hover{
+    background: #e5e5e5;
+    text-decoration: underline;
+}

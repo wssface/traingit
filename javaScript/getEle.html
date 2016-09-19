@@ -22,7 +22,7 @@
     </form>
     <p>getAttribute()和setAttribute()方法</p>
     <ul id="test">
-        <li title="JS">JavaScript</li>
+        <li class="dd" title="JS">JavaScript</li>
         <li title="JQ">JQuery</li>
         <li title="">HTML/CSS</li>
         <li title="JAVA">JAVA</li>
@@ -68,10 +68,11 @@
     * */
     var lists=document.getElementsByTagName("li");
     for(var i=0;i<lists.length;i++){
-        var text=lists[i].getAttribute("title");
+        var text=lists[i].getAttribute("class");
+        alert(text)
         document.write("title分别为："+text+"-----");
-        if(text==""){
-            lists[i].setAttribute("title","hahah");
+        if(text=="dd"){
+            lists[i].setAttribute("class","hahah");
             var text2=lists[i].getAttribute("title");
             document.write("重新设置了title："+text2+"<br>");
         }

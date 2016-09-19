@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="x-ua-compatible" content="IE=edge" charset="UTF-8">
+    <title>淘宝搜索</title>
+    <style>
+        *{padding: 0;margin: 0}
+        @font-face {
+            font-family: iconfont;
+            src: url("//at.alicdn.com/t/font_1465189805_4518812.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1465189805_4518812.woff") format("woff"), url("//at.alicdn.com/t/font_1465189805_4518812.ttf") format("truetype"), url("//at.alicdn.com/t/font_1465189805_4518812.svg#iconfont") format("svg");
+        }
+        body{font:12px/1.5 "sans serif", tahoma, verdana, helvetica;}
+        a{text-decoration: none;color:#6c6c6c; }
+        .search-container{position: relative;}
+        .search-tips{float: right;padding: 3px;}
+        .search-tips a{color:#6c6c6c; }
+        .search-button{float: right;}
+        .btn-search{
+            background: url("http://gtms01.alicdn.com/tps/il/T1qyj8Fc8aXXc4E9bI-400-300.png");
+            width: 100px;
+            height: 45px;
+            background-position: 0 -200px;
+            border: 0;
+            cursor: pointer;
+        }
+        .search-common-panel{
+            height: 39px;
+            background: #f50;
+            padding: 3px 0 3px 77px;
+            overflow: hidden;
+        }
+        .search-common-panel input{
+            height: 39px;
+            line-height: 39px;
+            background: #fff;
+            width: 100%;
+            border: 0 none;
+            outline:  none;
+        }
+        .search-common-panel i{
+            position: absolute;
+            top: 14px;
+            left: 86px;
+            color:#ccc;
+            z-index: 22;
+        }
+        .iconfont{
+            font-family: iconfont;
+            font-size: 12px;
+            font-style: normal;
+        }
+        ul{list-style: none;}
+        .search-list{
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 74px;
+            height: 39px;
+            overflow: hidden;
+            background: #fff;
+            z-index: 33;
+        }
+        .search-list ul li{
+            height: 39px;
+            line-height: 39px;
+            text-align: center;
+            border-left: 1px solid #f6f6f6;
+            border-right: 1px solid #e5e5e5;
+            display: none;
+        }
+        .search-list .selected{
+            background: #f6f6f6;
+            display: block;
+        }
+        .triger-hover{
+            height: auto;
+        }
+        .triger-hover li{
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <div id="search-list" class="search-list">
+            <ul>
+                <li id="tab_1" class="selected"><a href="#">宝贝</a></li>
+                <li id="tab_2"><a href="#">店铺</a></li>
+            </ul>
+        </div>
+        <div class="search-pannel">
+            <form>
+                <div class="search-tips">
+                    <a href="#">
+                        高级<br>搜索
+                    </a>
+                </div>
+                <div class="search-button">
+                    <button class="btn-search" type="submit"></button>
+                </div>
+                <div class="search-common-panel">
+                    <input type="text" x-webkit-speech>
+                    <i class="iconfont"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/search.js"></script>
+    <script>
+        // 添加个变量用于保存当前选择的Tab，这样当鼠标离开时，选择的也是保存的Tab
+        var curSelected = "tab_1";
+        // 创建一个函数，用于互斥选择
+        function selectTab(id){
+            if(id=='tab_1'){
+                getDom('tab_2').className='';
+            }else{
+                getDom('tab_1').className='';
+            }
+            getDom(id).className='selected'
+        }
+
+        addEvent('search-list','mouseover',function(){
+            this.className += ' triger-hover';
+        });
+        addEvent('search-list','mouseout',function(){
+            this.className = ' search-list';
+            selectTab(curSelected);
+
+        });
+
+        addEvent('tab_1','mouseover',function(){
+            selectTab('tab_1');
+        });
+
+
+        addEvent('tab_2','mouseover',function(){
+            selectTab('tab_2');
+        });
+
+
+        addEvent('tab_1','click',function(){
+            getDom('search-list').className='search-list';
+            curSelected='tab_1';
+            selectTab(curSelected);
+        });
+        addEvent('tab_2','click',function(){
+            getDom('search-list').className='search-list';
+            curSelected='tab_2';
+            selectTab(curSelected);
+        });
+    </script>
+</body>
+</html>
